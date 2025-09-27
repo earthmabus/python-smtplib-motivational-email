@@ -14,7 +14,6 @@ def load_password():
         retval = file_password.readline().strip()
     return retval
 
-
 # load the inspirational quotes from the QUOTES_FILE
 def load_quotes():
     retval = []
@@ -38,4 +37,4 @@ now = dt.datetime.now()
 
 # send an email
 account = email_account.EmailAccount(my_email="earthmabus@gmail.com", my_password=password)
-account.send_email("earthmabus@hotmail.com", f"Inspirational Quote of the Day ({now.year}/{now.month}/{now.day})", f"{chosen_quote[0]}\nby {chosen_quote[1]}")
+account.send_email("earthmabus@hotmail.com", f"Quote of the Day ({now.year}/{now.month}/{now.day})", f"{chosen_quote[0]}\n\nby {chosen_quote[1]}")
