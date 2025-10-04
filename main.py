@@ -3,8 +3,6 @@ import random
 import datetime as dt
 import os
 
-my_email = "earthmabus@gmail.com"
-
 QUOTES_FILE = "./quotes.txt"
 GMAIL_ADDRESS = os.environ.get("GMAIL_ADDRESS")
 GMAIL_PASSWORD = os.environ.get("GMAIL_PASSWORD")
