@@ -1,18 +1,13 @@
 import email_account
 import random
 import datetime as dt
+import os
 
 my_email = "earthmabus@gmail.com"
 
-PASSWORD_FILE = "./password.txt"
 QUOTES_FILE = "./quotes.txt"
-
-def load_password():
-    '''loads the password for the email account from PASSWORD_FILE'''
-    retval = ""
-    with open(PASSWORD_FILE, "r") as file_password:
-        retval = file_password.readline().strip()
-    return retval
+GMAIL_ADDRESS = os.environ.get("GMAIL_ADDRESS")
+GMAIL_PASSWORD = os.environ.get("GMAIL_PASSWORD")
 
 # load the inspirational quotes from the QUOTES_FILE
 def load_quotes():
@@ -29,12 +24,9 @@ def load_quotes():
 quotes = load_quotes()
 chosen_quote = random.choice(quotes)
 
-# acquire the password for the account
-password = load_password()
-
 # acquire the date
 now = dt.datetime.now()
 
 # send an email
-account = email_account.EmailAccount(my_email="earthmabus@gmail.com", my_password=password)
+account = email_account.EmailAccount(my_email=GMAIL_ADDRESS, my_password=GMAIL_PASSWORD)
 account.send_email("earthmabus@hotmail.com", f"Quote of the Day ({now.year}/{now.month}/{now.day})", f"{chosen_quote[0]}\n\nby {chosen_quote[1]}")
